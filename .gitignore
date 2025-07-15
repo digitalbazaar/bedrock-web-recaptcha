@@ -1,0 +1,13 @@
+*.log
+*.sw[nop]
+*~
+.project
+.settings
+.vscode
+TAGS
+coverage
+node_modules
+reports
+.cache
+jsdoc
+package-lock.json
