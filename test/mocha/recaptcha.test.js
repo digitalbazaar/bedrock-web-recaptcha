@@ -10,14 +10,21 @@ describe('getRecaptchaToken', () => {
       ready: cb => cb(),
       execute: () => Promise.resolve('TOK')
     };
-    const token = await getRecaptchaToken({siteKey: 'K', action: 'A'});
+    const token = await getRecaptchaToken({siteKey: 'K'});
     assert.equal(token, 'TOK');
   });
 
-  it('rejects immediately if retried too many times', () => {
+  it('rejects immediately for missing params', () => {
     return assert.rejects(
-      getRecaptchaToken({siteKey: 'K', action: 'A', i: 4}),
-      {message: 'Unable to load reCAPTCHA script'}
+      getRecaptchaToken({siteKey: undefined}),
+      {message: 'Missing required params'}
+    );
+  });
+
+  it('rejects non-allowable retry integer', () => {
+    return assert.rejects(
+      getRecaptchaToken({siteKey: 'A', retries: -1}),
+      {message: 'reCAPTCHA not ready'}
     );
   });
 });
