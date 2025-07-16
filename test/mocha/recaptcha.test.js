@@ -31,7 +31,7 @@ describe('getRecaptchaToken', () => {
   it('rejects non-allowable retry integer', () => {
     return assert.rejects(
       getRecaptchaToken({siteKey: 'A', retries: -1}),
-      {message: 'reCAPTCHA not ready'}
+      {message: 'reCAPTCHA script failed to load'}
     );
   });
 });
