@@ -1,7 +1,7 @@
 /*!
  * Copyright (c) 2025 Digital Bazaar, Inc. All rights reserved.
  */
-import {getRecaptchaToken, loadRecaptchaScript} from '../../lib/recaptcha.js';
+import {getRecaptchaToken, loadRecaptchaScript} from '@bedrock/web-recaptcha';
 import {strict as assert} from 'node:assert';
 
 describe('getRecaptchaToken', () => {
@@ -14,10 +14,17 @@ describe('getRecaptchaToken', () => {
     assert.equal(token, 'TOK');
   });
 
-  it('rejects immediately for missing params', () => {
+  it('rejects immediately for unacceptable siteKey', () => {
     return assert.rejects(
       getRecaptchaToken({siteKey: undefined}),
-      {message: 'Missing required params'}
+      {message: '"siteKey" must be a string.'}
+    );
+  });
+
+  it('rejects immediately for unacceptable action', () => {
+    return assert.rejects(
+      getRecaptchaToken({siteKey: 'A', action: null}),
+      {message: '"action" must be a string.'}
     );
   });
 
@@ -41,7 +48,9 @@ describe('loadRecaptchaScript', () => {
   });
 
   it('injects a <script> and resolves on load', async () => {
-    const p = loadRecaptchaScript({siteKey: 'test-site-key', emitFn: () => {}});
+    const p = loadRecaptchaScript({
+      siteKey: 'test-site-key', emitFn: () => {}
+    });
     const script = document.getElementById('recaptcha-script');
     assert.ok(script, 'should have appended a <script> element');
     assert.ok(
@@ -52,7 +61,9 @@ describe('loadRecaptchaScript', () => {
   });
 
   it('rejects when onerror fires', async () => {
-    const p = loadRecaptchaScript({siteKey: 'test-site-key', emitFn: () => {}});
+    const p = loadRecaptchaScript({
+      siteKey: 'test-site-key', emitFn: () => {}
+    });
     const script = document.getElementById('recaptcha-script');
     script.onerror(); // simulate error
     await assert.rejects(p);
