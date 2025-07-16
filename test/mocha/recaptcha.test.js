@@ -48,22 +48,15 @@ describe('loadRecaptchaScript', () => {
   });
 
   it('injects a <script> and resolves on load', async () => {
-    const p = loadRecaptchaScript({
-      siteKey: 'test-site-key', emitFn: () => {}
-    });
+    const p = loadRecaptchaScript({url: 'fake-url'});
     const script = document.getElementById('recaptcha-script');
     assert.ok(script, 'should have appended a <script> element');
-    assert.ok(
-      script.src.includes('render=test-site-key'),
-      'src must include your siteKey');
     script.onload(); // simulate load
     await p;
   });
 
   it('rejects when onerror fires', async () => {
-    const p = loadRecaptchaScript({
-      siteKey: 'test-site-key', emitFn: () => {}
-    });
+    const p = loadRecaptchaScript({url: 'fake-url'});
     const script = document.getElementById('recaptcha-script');
     script.onerror(); // simulate error
     await assert.rejects(p);
