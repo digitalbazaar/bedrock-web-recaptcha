@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2025 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {config} from '@bedrock/core';
 import path from 'node:path';
