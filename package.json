@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/web-recaptcha",
-  "version": "1.0.0",
+  "version": "0.0.1-0",
   "description": "Front-end utilities for recaptcha.",
   "type": "module",
   "exports": "./lib/index.js",
@@ -14,8 +14,7 @@
     "type": "git",
     "url": "https://github.com/digitalbazaar/bedrock-web-recaptcha"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "eslint": "^8.57.0",
     "eslint-config-digitalbazaar": "^5.2.0",
