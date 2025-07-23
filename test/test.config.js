@@ -4,7 +4,7 @@
 import {config} from '@bedrock/core';
 import path from 'node:path';
 
-config.mocha.tests.push(path.join(import.meta.dirname, 'mocha'));
+config.mocha.tests.push(path.join(import.meta.dirname, 'web'));
 
 // allow self-signed certs in test framework
 config['https-agent'].rejectUnauthorized = false;
