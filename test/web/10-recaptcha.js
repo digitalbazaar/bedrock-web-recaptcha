@@ -4,7 +4,7 @@
 import {getRecaptchaToken, loadRecaptchaScript} from '@bedrock/web-recaptcha';
 import {strict as assert} from 'node:assert';
 
-describe('getRecaptchaToken', () => {
+describe('Get Token', () => {
   it('resolves with token when grecaptcha is ready', async () => {
     window.grecaptcha = {
       ready: cb => cb(),
@@ -16,7 +16,7 @@ describe('getRecaptchaToken', () => {
 
   it('rejects immediately for unacceptable siteKey', () => {
     return assert.rejects(
-      getRecaptchaToken({siteKey: undefined}),
+      getRecaptchaToken({siteKey: null}),
       {message: '"siteKey" must be a string.'}
     );
   });
@@ -36,7 +36,7 @@ describe('getRecaptchaToken', () => {
   });
 });
 
-describe('loadRecaptchaScript', () => {
+describe('Load Script', () => {
   beforeEach(() => {
     // Remove pre-existing grecaptcha.
     delete window.grecaptcha;
