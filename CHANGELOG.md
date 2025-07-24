@@ -1,6 +1,6 @@
 # bedrock-web-recaptcha ChangeLog
 
-## 1.1.0 2025-07-xx
+## 1.1.0 2025-07-23
 
 ### Changed
 - Leverage `@bedrock/web` for setting configs.
