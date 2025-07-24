@@ -2,7 +2,7 @@
 
 ## 1.1.0 2025-07-xx
 
-###Changed
+### Changed
 - Leverage `@bedrock/web` for setting configs.
 
 ## 1.0.0 2025-07-17
